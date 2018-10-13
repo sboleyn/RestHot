@@ -1,17 +1,26 @@
-
-
 <head>
-
-
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
-
-
 
 <body>
     <h2>VIEW</h2>
     <a href="/">GO TO HOME</a>
     <a href="/make">GO TO MAKE</a>
+    <section id="tables">
 
+    </section>
+
+    <script>
+        $.get("/api/tables", function(data){
+            console.log(data);
+            for(var i = 0; i < data.length; i++){
+                console.log(data[i]);
+                
+                $("#tables").append($("<p>").append("NAME: " + data[i].name + "</br>" + "ID: " + data[i].id));
+            }
+        })
+    </script>
 
 
 </body>

@@ -1,7 +1,7 @@
-
-
 <head>
 
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -12,6 +12,40 @@
     <a href="/">GO TO HOME</a>
     <a href="/view">GO TO VIEW</a>
 
+    <form role="form">
+        <form role="form">
+            <div class="form-group"></div>
+            <label for="reserve-name">Name</label>
+            <input type="text" class="form-control" id="reserve-name">
+            </div>
+            <div class="form-group">
+                <label for="reserve-phone">Phone Number</label>
+                <input type="text" class="form-control" id="reserve-phone">
+            </div>
+            <div class="form-group">
+                <label for="reserve-email">Email</label>
+                <input type="text" class="form-control" id="reserve-email">
+            </div>
+            <div class="form-group">
+                <label for="reserve-unique-id">Unique ID</label>
+                <input type="text" class="form-control" id="reserve-unique-id">
+            </div>
+            <button type="submit" id="newres" class="btn btn-primary submit">Submit</button>
+        </form>
 
 
+        <script>
+            $("#newres").on("click", function () {
+                event.preventDefault();
+                var name = $("#reserve-name").val();
+                var phone = $("#reserve-phone").val();
+                var email = $("#reserve-email").val();
+                var id = $("#reserve-unique-id").val();
+                var obj = { name: name, phone: phone, email: email, id: id };
+                console.log(obj);
+                $.post("/make", obj, function(req,res){
+                    alert("NEW TABLE WRITEN")
+                })
+            })
+        </script>
 </body>
